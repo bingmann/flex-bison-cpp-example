@@ -1,4 +1,5 @@
 // $Id$
+/** \file driver.cc Implementation of the example::Driver class. */
 
 #include <fstream>
 #include <sstream>
