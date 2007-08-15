@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+#include "expression.h"
+
 %}
 
 /*** yacc/bison Declarations ***/
@@ -48,17 +50,28 @@
 /* verbose error messages */
 %error-verbose
 
+ /*** BEGIN EXAMPLE - Change the example grammar's tokens below ***/
+
 %union {
     int  			integerVal;
     double 			doubleVal;
     std::string*		stringVal;
+    CalcNode*			calcnode;
 }
 
 %token			END	     0	"end of file"
 %token <integerVal> 	INTEGER		"integer"
 %token <doubleVal> 	DOUBLE		"double"
 %token <stringVal> 	STRING		"string"
-%token 			EOL		"end of line"
+
+%type <calcnode>	constant variable
+%type <calcnode>	atomexpr powexpr unaryexpr mulexpr addexpr expr
+
+%destructor { delete $$; } STRING
+%destructor { delete $$; } constant variable
+%destructor { delete $$; } atomexpr powexpr unaryexpr mulexpr addexpr expr
+
+ /*** END EXAMPLE - Change the example grammar's tokens above ***/
 
 %{
 
@@ -75,7 +88,122 @@
 
 %% /*** Grammar Rules ***/
 
-start	: EOL
+ /*** BEGIN EXAMPLE - Change the example grammar rules below ***/
+
+constant : INTEGER
+           {
+	       $$ = new CNConstant($1);
+	   }
+         | DOUBLE
+           {
+	       $$ = new CNConstant($1);
+	   }
+
+variable : STRING
+           {
+	       if (!driver.calc.existsVariable(*$1)) {
+		   error(yyloc, std::string("Unknown variable \"") + *$1 + "\"");
+		   delete $1;
+		   YYERROR;
+	       }
+	       else {
+		   $$ = new CNConstant( driver.calc.getVariable(*$1) );
+		   delete $1;
+	       }
+	   }
+
+atomexpr : constant
+           {
+	       $$ = $1;
+	   }
+         | variable
+           {
+	       $$ = $1;
+	   }
+         | '(' expr ')'
+           {
+	       $$ = $2;
+	   }
+
+powexpr : atomexpr
+          {
+	      $$ = $1;
+	  }
+        | powexpr '^' atomexpr
+          {
+	      $$ = new CNPower($1, $3);
+	  }
+
+unaryexpr : powexpr
+            {
+		$$ = $1;
+	    }
+          | '+' powexpr
+            {
+		$$ = $2;
+	    }
+          | '-' powexpr
+            {
+		$$ = new CNNegate($2);
+	    }
+
+mulexpr : unaryexpr
+          {
+	      $$ = $1;
+	  }
+        | mulexpr '*' unaryexpr
+          {
+	      $$ = new CNMultiply($1, $3);
+	  }
+        | mulexpr '/' unaryexpr
+          {
+	      $$ = new CNDivide($1, $3);
+	  }
+        | mulexpr '%' unaryexpr
+          {
+	      $$ = new CNModulo($1, $3);
+	  }
+
+addexpr : mulexpr
+          {
+	      $$ = $1;
+	  }
+        | addexpr '+' mulexpr
+          {
+	      $$ = new CNAdd($1, $3);
+	  }
+        | addexpr '-' mulexpr
+          {
+	      $$ = new CNSubtract($1, $3);
+	  }
+
+expr	: addexpr
+          {
+	      $$ = $1;
+	  }
+
+assignment : STRING '=' expr
+             {
+		 driver.calc.variables[*$1] = $3->evaluate();
+		 std::cout << "Setting variable " << *$1
+			   << " = " << driver.calc.variables[*$1] << "\n";
+		 delete $1;
+		 delete $3;
+	     }
+
+start	: /* empty */
+	| start assignment ';'
+	| start assignment END
+        | start expr ';'
+          {
+	      driver.calc.expressions.push_back($2);
+	  }
+        | start expr END
+          {
+	      driver.calc.expressions.push_back($2);
+	  }
+
+ /*** END EXAMPLE - Change the example grammar rules above ***/
 
 %% /*** Additional Code ***/
 

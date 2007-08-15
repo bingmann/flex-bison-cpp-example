@@ -10,9 +10,10 @@
 
 namespace example {
 
-Driver::Driver()
+Driver::Driver(class CalcContext& _calc)
     : trace_scanning(false),
-      trace_parsing(false)
+      trace_parsing(false),
+      calc(_calc)
 {
 }
 
@@ -26,7 +27,7 @@ bool Driver::parse_stream(std::istream &in, const std::string &sname)
 
     Parser parser(*this);
     parser.set_debug_level(trace_parsing);
-    return parser.parse();
+    return (parser.parse() == 0);
 }
 
 bool Driver::parse_file(const std::string &filename)

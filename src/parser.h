@@ -55,10 +55,12 @@ namespace example
 #include <string>
 #include <vector>
 
+#include "expression.h"
+
 
 
 /* Line 35 of lalr1.cc.  */
-#line 62 "parser.h"
+#line 64 "parser.h"
 
 #include "location.hh"
 
@@ -109,14 +111,15 @@ namespace example
     /// Symbol semantic values.
 #ifndef YYSTYPE
     union semantic_type
-#line 51 "parser.yy"
+#line 55 "parser.yy"
 {
     int  			integerVal;
     double 			doubleVal;
     std::string*		stringVal;
+    CalcNode*			calcnode;
 }
 /* Line 35 of lalr1.cc.  */
-#line 120 "parser.h"
+#line 123 "parser.h"
 	;
 #else
     typedef YYSTYPE semantic_type;
@@ -131,8 +134,7 @@ namespace example
      END = 0,
      INTEGER = 258,
      DOUBLE = 259,
-     STRING = 260,
-     EOL = 261
+     STRING = 260
    };
 
     };
@@ -227,7 +229,7 @@ namespace example
     static const unsigned char yytable_[];
     static const signed char yytable_ninf_;
 
-    static const unsigned char yycheck_[];
+    static const signed char yycheck_[];
 
     /// For a state, its accessing symbol.
     static const unsigned char yystos_[];

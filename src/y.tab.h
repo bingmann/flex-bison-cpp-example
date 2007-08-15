@@ -1,4 +1,5 @@
 // $Id$
+/** \file y.tab.h Forwarding include file to parser.h */
 
 /* When using automake the bison parser file "xyz.yy" is processed by the
  * ylwrap script. It calls bison in a separate directory, which outputs source

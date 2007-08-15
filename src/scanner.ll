@@ -28,7 +28,7 @@ typedef example::Parser::token_type token_type;
 /* enable c++ scanner class generation */
 %option c++
 
-/* change the name of the scanner class */
+/* change the name of the scanner class. results in "ExampleFlexLexer" */
 %option prefix="Example"
 
 /* the manual says "somewhat more optimized" */
@@ -52,6 +52,7 @@ typedef example::Parser::token_type token_type;
 
 %% /*** Regular Expressions Part ***/
 
+ /* code to place at the beginning of yylex() */
 %{
     // reset location
     yylloc->step();
@@ -59,6 +60,8 @@ typedef example::Parser::token_type token_type;
     // variable for quoted strings
     std::string	quotedstring;
 %}
+
+ /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
 [0-9]+ {
     yylval->integerVal = atoi(yytext);
@@ -75,25 +78,22 @@ typedef example::Parser::token_type token_type;
     return token::STRING;
 }
 
- /* skip perl-style comments */
-#[^\n]*\n {
-}
-
  /* gobble up white-spaces */
 [ \t\r]+ {
     yylloc->step();
 }
 
- /* but identify end of lines */
+ /* gobble up end-of-lines */
 \n {
     yylloc->lines(yyleng); yylloc->step();
-    return token::EOL;
 }
 
  /* pass all other characters up to bison */
 . {
     return static_cast<token_type>(*yytext);
 }
+
+ /*** END EXAMPLE - Change the example lexer rules above ***/
 
 %% /*** Additional Code ***/
 

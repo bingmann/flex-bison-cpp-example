@@ -38,7 +38,7 @@
 #include "y.tab.h"
 
 /* User implementation prologue.  */
-#line 63 "parser.yy"
+#line 76 "parser.yy"
 
 
 #include "driver.h"
@@ -210,7 +210,52 @@ namespace example
 
     switch (yytype)
       {
-  
+        case 5: /* "\"string\"" */
+#line 70 "parser.yy"
+	{ delete (yyvaluep->stringVal); };
+#line 217 "parser.cc"
+	break;
+      case 17: /* "constant" */
+#line 71 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 222 "parser.cc"
+	break;
+      case 18: /* "variable" */
+#line 71 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 227 "parser.cc"
+	break;
+      case 19: /* "atomexpr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 232 "parser.cc"
+	break;
+      case 20: /* "powexpr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 237 "parser.cc"
+	break;
+      case 21: /* "unaryexpr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 242 "parser.cc"
+	break;
+      case 22: /* "mulexpr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 247 "parser.cc"
+	break;
+      case 23: /* "addexpr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 252 "parser.cc"
+	break;
+      case 24: /* "expr" */
+#line 72 "parser.yy"
+	{ delete (yyvaluep->calcnode); };
+#line 257 "parser.cc"
+	break;
+
 	default:
 	  break;
       }
@@ -284,13 +329,13 @@ namespace example
 
 
     /* User initialization code.  */
-    #line 38 "/tdata/home/Desktop/cpp-flex-bison/trunk/src/parser.yy"
+    #line 40 "/tdata/home/Desktop/cpp-flex-bison/trunk/src/parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
 }
   /* Line 547 of yacc.c.  */
-#line 294 "parser.cc"
+#line 339 "parser.cc"
     /* Initialize the stacks.  The initial state will be pushed in
        yynewstate, since the latter expects the semantical and the
        location values to have been already stored, initialize these
@@ -405,9 +450,175 @@ namespace example
     YY_REDUCE_PRINT (yyn);
     switch (yyn)
       {
-	
+	  case 2:
+#line 94 "parser.yy"
+    {
+	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].integerVal));
+	   }
+    break;
+
+  case 3:
+#line 98 "parser.yy"
+    {
+	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].doubleVal));
+	   }
+    break;
+
+  case 4:
+#line 103 "parser.yy"
+    {
+	       if (!driver.calc.existsVariable(*(yysemantic_stack_[(1) - (1)].stringVal))) {
+		   error(yyloc, std::string("Unknown variable \"") + *(yysemantic_stack_[(1) - (1)].stringVal) + "\"");
+		   delete (yysemantic_stack_[(1) - (1)].stringVal);
+		   YYERROR;
+	       }
+	       else {
+		   (yyval.calcnode) = new CNConstant( driver.calc.getVariable(*(yysemantic_stack_[(1) - (1)].stringVal)) );
+		   delete (yysemantic_stack_[(1) - (1)].stringVal);
+	       }
+	   }
+    break;
+
+  case 5:
+#line 116 "parser.yy"
+    {
+	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	   }
+    break;
+
+  case 6:
+#line 120 "parser.yy"
+    {
+	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	   }
+    break;
+
+  case 7:
+#line 124 "parser.yy"
+    {
+	       (yyval.calcnode) = (yysemantic_stack_[(3) - (2)].calcnode);
+	   }
+    break;
+
+  case 8:
+#line 129 "parser.yy"
+    {
+	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	  }
+    break;
+
+  case 9:
+#line 133 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNPower((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 10:
+#line 138 "parser.yy"
+    {
+		(yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	    }
+    break;
+
+  case 11:
+#line 142 "parser.yy"
+    {
+		(yyval.calcnode) = (yysemantic_stack_[(2) - (2)].calcnode);
+	    }
+    break;
+
+  case 12:
+#line 146 "parser.yy"
+    {
+		(yyval.calcnode) = new CNNegate((yysemantic_stack_[(2) - (2)].calcnode));
+	    }
+    break;
+
+  case 13:
+#line 151 "parser.yy"
+    {
+	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	  }
+    break;
+
+  case 14:
+#line 155 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNMultiply((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 15:
+#line 159 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNDivide((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 16:
+#line 163 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNModulo((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 17:
+#line 168 "parser.yy"
+    {
+	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	  }
+    break;
+
+  case 18:
+#line 172 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNAdd((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 19:
+#line 176 "parser.yy"
+    {
+	      (yyval.calcnode) = new CNSubtract((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
+	  }
+    break;
+
+  case 20:
+#line 181 "parser.yy"
+    {
+	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
+	  }
+    break;
+
+  case 21:
+#line 186 "parser.yy"
+    {
+		 driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] = (yysemantic_stack_[(3) - (3)].calcnode)->evaluate();
+		 std::cout << "Setting variable " << *(yysemantic_stack_[(3) - (1)].stringVal)
+			   << " = " << driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] << "\n";
+		 delete (yysemantic_stack_[(3) - (1)].stringVal);
+		 delete (yysemantic_stack_[(3) - (3)].calcnode);
+	     }
+    break;
+
+  case 25:
+#line 198 "parser.yy"
+    {
+	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
+	  }
+    break;
+
+  case 26:
+#line 202 "parser.yy"
+    {
+	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
+	  }
+    break;
+
+
     /* Line 675 of lalr1.cc.  */
-#line 411 "parser.cc"
+#line 622 "parser.cc"
 	default: break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
@@ -614,11 +825,15 @@ namespace example
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char Parser::yypact_ninf_ = -7;
+  const signed char Parser::yypact_ninf_ = -18;
   const signed char
   Parser::yypact_[] =
   {
-        -6,    -7,     1,    -7
+       -18,     3,   -18,   -18,   -18,     7,    14,    22,    22,   -18,
+     -18,   -18,    29,   -18,    18,    -5,     0,     1,    14,   -18,
+      15,    29,    29,    22,    14,    14,    14,    14,    14,   -18,
+     -18,   -18,   -18,   -18,   -18,   -18,   -18,   -18,   -18,    18,
+      18
   };
 
   /* YYDEFACT[S] -- default rule to reduce with in state S when YYTABLE
@@ -627,21 +842,27 @@ namespace example
   const unsigned char
   Parser::yydefact_[] =
   {
-         0,     2,     0,     1
+        22,     0,     1,     2,     3,     4,     0,     0,     0,     5,
+       6,     8,    10,    13,    17,    20,     0,     0,     0,     4,
+       0,    11,    12,     0,     0,     0,     0,     0,     0,    26,
+      25,    24,    23,    21,     7,     9,    14,    15,    16,    18,
+      19
   };
 
   /* YYPGOTO[NTERM-NUM].  */
   const signed char
   Parser::yypgoto_[] =
   {
-        -7,    -7
+       -18,   -18,   -18,    16,    28,     8,   -17,   -18,    -4,   -18,
+     -18
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
   const signed char
   Parser::yydefgoto_[] =
   {
-        -1,     2
+        -1,     9,    10,    11,    12,    13,    14,    15,    16,    17,
+       1
   };
 
   /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -651,14 +872,20 @@ namespace example
   const unsigned char
   Parser::yytable_[] =
   {
-         1,     3
+        29,    31,    20,     2,    27,    28,     3,     4,     5,     6,
+      39,    40,     7,     8,    33,    30,    32,     3,     4,    19,
+       6,    18,    34,     7,     8,     3,     4,    19,     6,    24,
+      25,    26,    36,    37,    38,    21,    22,    23,     0,    35
   };
 
   /* YYCHECK.  */
-  const unsigned char
+  const signed char
   Parser::yycheck_[] =
   {
-         6,     0
+         0,     0,     6,     0,     9,    10,     3,     4,     5,     6,
+      27,    28,     9,    10,    18,    15,    15,     3,     4,     5,
+       6,    14,     7,     9,    10,     3,     4,     5,     6,    11,
+      12,    13,    24,    25,    26,     7,     8,     8,    -1,    23
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -666,7 +893,11 @@ namespace example
   const unsigned char
   Parser::yystos_[] =
   {
-         0,     6,     8,     0
+         0,    26,     0,     3,     4,     5,     6,     9,    10,    17,
+      18,    19,    20,    21,    22,    23,    24,    25,    14,     5,
+      24,    20,    20,     8,    11,    12,    13,     9,    10,     0,
+      15,     0,    15,    24,     7,    19,    21,    21,    21,    22,
+      22
   };
 
 #if YYDEBUG
@@ -675,7 +906,8 @@ namespace example
   const unsigned short int
   Parser::yytoken_number_[] =
   {
-         0,   256,   257,   258,   259,   260,   261
+         0,   256,   257,   258,   259,   260,    40,    41,    94,    43,
+      45,    42,    47,    37,    61,    59
   };
 #endif
 
@@ -683,14 +915,18 @@ namespace example
   const unsigned char
   Parser::yyr1_[] =
   {
-         0,     7,     8
+         0,    16,    17,    17,    18,    19,    19,    19,    20,    20,
+      21,    21,    21,    22,    22,    22,    22,    23,    23,    23,
+      24,    25,    26,    26,    26,    26,    26
   };
 
   /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
   const unsigned char
   Parser::yyr2_[] =
   {
-         0,     2,     1
+         0,     2,     1,     1,     1,     1,     1,     3,     1,     3,
+       1,     2,     2,     1,     3,     3,     3,     1,     3,     3,
+       1,     3,     0,     3,     3,     3,     3
   };
 
 #if YYDEBUG || YYERROR_VERBOSE || YYTOKEN_TABLE
@@ -700,7 +936,9 @@ namespace example
   const Parser::yytname_[] =
   {
     "\"end of file\"", "error", "$undefined", "\"integer\"", "\"double\"",
-  "\"string\"", "\"end of line\"", "$accept", "start", 0
+  "\"string\"", "'('", "')'", "'^'", "'+'", "'-'", "'*'", "'/'", "'%'",
+  "'='", "';'", "$accept", "constant", "variable", "atomexpr", "powexpr",
+  "unaryexpr", "mulexpr", "addexpr", "expr", "assignment", "start", 0
   };
 #endif
 
@@ -709,7 +947,14 @@ namespace example
   const Parser::rhs_number_type
   Parser::yyrhs_[] =
   {
-         8,     0,    -1,     6,    -1
+        26,     0,    -1,     3,    -1,     4,    -1,     5,    -1,    17,
+      -1,    18,    -1,     6,    24,     7,    -1,    19,    -1,    20,
+       8,    19,    -1,    20,    -1,     9,    20,    -1,    10,    20,
+      -1,    21,    -1,    22,    11,    21,    -1,    22,    12,    21,
+      -1,    22,    13,    21,    -1,    22,    -1,    23,     9,    22,
+      -1,    23,    10,    22,    -1,    23,    -1,     5,    14,    24,
+      -1,    -1,    26,    25,    15,    -1,    26,    25,     0,    -1,
+      26,    24,    15,    -1,    26,    24,     0,    -1
   };
 
   /* YYPRHS[YYN] -- Index of the first RHS symbol of rule number YYN in
@@ -717,14 +962,18 @@ namespace example
   const unsigned char
   Parser::yyprhs_[] =
   {
-         0,     0,     3
+         0,     0,     3,     5,     7,     9,    11,    13,    17,    19,
+      23,    25,    28,    31,    33,    37,    41,    45,    47,    51,
+      55,    57,    61,    62,    66,    70,    74
   };
 
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
   const unsigned char
   Parser::yyrline_[] =
   {
-         0,    78,    78
+         0,    93,    93,    97,   102,   115,   119,   123,   128,   132,
+     137,   141,   145,   150,   154,   158,   162,   167,   171,   175,
+     180,   185,   194,   195,   196,   197,   201
   };
 
   // Print the state stack on the debug stream.
@@ -767,13 +1016,13 @@ namespace example
            0,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,    13,     2,     2,
+       6,     7,    11,     9,     2,    10,     2,    12,     2,     2,
+       2,     2,     2,     2,     2,     2,     2,     2,     2,    15,
+       2,    14,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
+       2,     2,     2,     2,     8,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
@@ -790,7 +1039,7 @@ namespace example
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6
+       5
     };
     if ((unsigned int) t <= yyuser_token_number_max_)
       return translate_table[t];
@@ -799,20 +1048,20 @@ namespace example
   }
 
   const int Parser::yyeof_ = 0;
-  const int Parser::yylast_ = 1;
-  const int Parser::yynnts_ = 2;
+  const int Parser::yylast_ = 39;
+  const int Parser::yynnts_ = 11;
   const int Parser::yyempty_ = -2;
-  const int Parser::yyfinal_ = 3;
+  const int Parser::yyfinal_ = 2;
   const int Parser::yyterror_ = 1;
   const int Parser::yyerrcode_ = 256;
-  const int Parser::yyntokens_ = 7;
+  const int Parser::yyntokens_ = 16;
 
-  const unsigned int Parser::yyuser_token_number_max_ = 261;
+  const unsigned int Parser::yyuser_token_number_max_ = 260;
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
 } // namespace example
 
-#line 80 "parser.yy"
+#line 208 "parser.yy"
  /*** Additional Code ***/
 
 void example::Parser::error(const Parser::location_type& l,
