@@ -13,6 +13,8 @@ bin_PROGRAMS = test
 test_SOURCES = test.cc
 LIBS = libexampleparser.a
 
+test_DEPENDENCIES = libexampleparser.a
+
 # this output override is needed because the c++ scanner is outputted into
 # lex.yy.cc and the automake ylwrap script only checks for lex.yy.c
 AM_LFLAGS = -olex.yy.c
