@@ -3,7 +3,7 @@
 AC_PREREQ(2.59)
 
 AC_INIT([flex-bison-cpp-example], [0.1])
-AC_CONFIG_SRCDIR([src/test.cc])
+AC_CONFIG_SRCDIR([src/exprtest.cc])
 AC_CONFIG_AUX_DIR([scripts])
 
 AM_INIT_AUTOMAKE(foreign)
@@ -15,6 +15,20 @@ fi
 if test "$CXXFLAGS" == ""; then
     CXXFLAGS="-g -I/usr/include"
 fi
+
+# enable full optimization by configure switch
+AC_ARG_ENABLE(optimize,
+	AS_HELP_STRING([--enable-optimize],
+		       [Build with full optimization @<:@default=no@:>@]),
+        [ case "${enableval}" in
+          yes)
+                CFLAGS="$CFLAGS -O3 -DNDEBUG";
+                CXXFLAGS="$CXXFLAGS -O3 -DNDEBUG";
+          ;;
+          no) ;;
+          *) AC_MSG_ERROR(bad value ${enableval} for --enable-optimize) ;;
+          esac ],
+        [ optimize=false ])
 
 # Checks for programs.
 AC_PROG_CC

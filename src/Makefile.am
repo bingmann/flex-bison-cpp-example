@@ -7,7 +7,8 @@ noinst_LIBRARIES = libexampleparser.a
 
 libexampleparser_a_SOURCES = \
 	parser.yy scanner.ll scanner.h driver.cc driver.h y.tab.h \
-	location.hh position.hh stack.hh
+	expression.h parser.h \
+	location.hh position.hh stack.hh FlexLexer.h
 
 bin_PROGRAMS = exprtest
 
