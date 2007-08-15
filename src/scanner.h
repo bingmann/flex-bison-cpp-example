@@ -29,7 +29,8 @@ namespace example {
 /** Scanner is a derived class to add some extra function to the scanner
  * class. Flex itself creates a class named yyFlexLexer, which is renamed using
  * macros to ExampleFlexLexer. However we change the context of the generated
- * yylex() function to be contained within the Scanner class. */
+ * yylex() function to be contained within the Scanner class. This is required
+ * because the yylex() defined in ExampleFlexLexer has no parameters. */
 class Scanner : public ExampleFlexLexer
 {
 public:

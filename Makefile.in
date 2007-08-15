@@ -160,6 +160,7 @@ target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = src
+EXTRA_DIST = Doxyfile html
 all: all-recursive
 
 .SUFFIXES:
