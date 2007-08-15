@@ -33,7 +33,7 @@ POST_INSTALL = :
 NORMAL_UNINSTALL = :
 PRE_UNINSTALL = :
 POST_UNINSTALL = :
-bin_PROGRAMS = test$(EXEEXT)
+bin_PROGRAMS = exprtest$(EXEEXT)
 subdir = src
 DIST_COMMON = $(srcdir)/Makefile.am $(srcdir)/Makefile.in parser.cc \
 	scanner.cc
@@ -54,9 +54,9 @@ libexampleparser_a_OBJECTS = $(am_libexampleparser_a_OBJECTS)
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_test_OBJECTS = test.$(OBJEXT)
-test_OBJECTS = $(am_test_OBJECTS)
-test_LDADD = $(LDADD)
+am_exprtest_OBJECTS = exprtest.$(OBJEXT)
+exprtest_OBJECTS = $(am_exprtest_OBJECTS)
+exprtest_LDADD = $(LDADD)
 DEFAULT_INCLUDES = -I.@am__isrc@
 depcomp = $(SHELL) $(top_srcdir)/scripts/depcomp
 am__depfiles_maybe = depfiles
@@ -72,8 +72,8 @@ COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
 	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
 CCLD = $(CC)
 LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
-SOURCES = $(libexampleparser_a_SOURCES) $(test_SOURCES)
-DIST_SOURCES = $(libexampleparser_a_SOURCES) $(test_SOURCES)
+SOURCES = $(libexampleparser_a_SOURCES) $(exprtest_SOURCES)
+DIST_SOURCES = $(libexampleparser_a_SOURCES) $(exprtest_SOURCES)
 ETAGS = etags
 CTAGS = ctags
 DISTFILES = $(DIST_COMMON) $(DIST_SOURCES) $(TEXINFOS) $(EXTRA_DIST)
@@ -175,8 +175,8 @@ libexampleparser_a_SOURCES = \
 	parser.yy scanner.ll scanner.h driver.cc driver.h y.tab.h \
 	location.hh position.hh stack.hh
 
-test_SOURCES = test.cc
-test_DEPENDENCIES = libexampleparser.a
+exprtest_SOURCES = exprtest.cc
+exprtest_DEPENDENCIES = libexampleparser.a
 
 # this output override is needed because the c++ scanner is outputted into
 # lex.yy.cc and the automake ylwrap script only checks for lex.yy.c
@@ -244,9 +244,9 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-test$(EXEEXT): $(test_OBJECTS) $(test_DEPENDENCIES) 
-	@rm -f test$(EXEEXT)
-	$(CXXLINK) $(test_OBJECTS) $(test_LDADD) $(LIBS)
+exprtest$(EXEEXT): $(exprtest_OBJECTS) $(exprtest_DEPENDENCIES) 
+	@rm -f exprtest$(EXEEXT)
+	$(CXXLINK) $(exprtest_OBJECTS) $(exprtest_LDADD) $(LIBS)
 
 mostlyclean-compile:
 	-rm -f *.$(OBJEXT)
@@ -255,9 +255,9 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/driver.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/exprtest.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/parser.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/scanner.Po@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/test.Po@am__quote@
 
 .cc.o:
 @am__fastdepCXX_TRUE@	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<

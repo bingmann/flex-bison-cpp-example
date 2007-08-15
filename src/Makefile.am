@@ -9,11 +9,12 @@ libexampleparser_a_SOURCES = \
 	parser.yy scanner.ll scanner.h driver.cc driver.h y.tab.h \
 	location.hh position.hh stack.hh
 
-bin_PROGRAMS = test
-test_SOURCES = test.cc
-LIBS = libexampleparser.a
+bin_PROGRAMS = exprtest
 
-test_DEPENDENCIES = libexampleparser.a
+exprtest_SOURCES = exprtest.cc
+exprtest_DEPENDENCIES = libexampleparser.a
+
+LIBS = libexampleparser.a
 
 # this output override is needed because the c++ scanner is outputted into
 # lex.yy.cc and the automake ylwrap script only checks for lex.yy.c
