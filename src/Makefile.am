@@ -6,9 +6,9 @@ AM_CXXFLAGS = -W -Wall -Wextra -ansi
 noinst_LIBRARIES = libexampleparser.a
 
 libexampleparser_a_SOURCES = \
-	parser.yy scanner.ll scanner.h driver.cc driver.h y.tab.h \
-	expression.h parser.h \
-	location.hh position.hh stack.hh FlexLexer.h
+	parser.yy scanner.ll parser.h scanner.h y.tab.h \
+	location.hh position.hh stack.hh FlexLexer.h \
+	driver.cc driver.h expression.h
 
 bin_PROGRAMS = exprtest
 

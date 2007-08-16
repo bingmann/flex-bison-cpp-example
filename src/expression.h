@@ -4,11 +4,10 @@
 #ifndef EXPRESSION_H
 #define EXPRESSION_H
 
-#include <math.h>
-
 #include <map>
 #include <vector>
 #include <stdexcept>
+#include <cmath>
 
 /** CalcNode is the abstract base class for calculation nodes. From it the
  * different nullary, unary and binary nodes are derived. */
@@ -27,7 +26,7 @@ public:
 
     /// output the calculation tree to the given stream. tries to format the
     /// output to make tree levels visible.
-    virtual void	print(std::ostream &os, unsigned int depth=0) = 0;
+    virtual void	print(std::ostream &os, unsigned int depth=0) const = 0;
 
     /// helper function for print() which makes the indention string
     static inline std::string indent(unsigned int d)
@@ -54,7 +53,7 @@ public:
 	return value;
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << value << std::endl;
     }
@@ -82,7 +81,7 @@ public:
 	return - node->evaluate();
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "- negate" << std::endl;
 	node->print(os, depth+1);
@@ -115,7 +114,7 @@ public:
 	return left->evaluate() + right->evaluate();
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "+ add" << std::endl;
 	left->print(os, depth+1);
@@ -149,7 +148,7 @@ public:
 	return left->evaluate() - right->evaluate();
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "- subtract" << std::endl;
 	left->print(os, depth+1);
@@ -183,7 +182,7 @@ public:
 	return left->evaluate() * right->evaluate();
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "* multiply" << std::endl;
 	left->print(os, depth+1);
@@ -217,7 +216,7 @@ public:
 	return left->evaluate() / right->evaluate();
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "/ divide" << std::endl;
 	left->print(os, depth+1);
@@ -249,10 +248,10 @@ public:
 
     virtual double evaluate() const
     {
-	return fmod(left->evaluate(), right->evaluate());
+	return std::fmod(left->evaluate(), right->evaluate());
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "% modulo" << std::endl;
 	left->print(os, depth+1);
@@ -283,10 +282,10 @@ public:
 
     virtual double evaluate() const
     {
-	return pow(left->evaluate(), right->evaluate());
+	return std::pow(left->evaluate(), right->evaluate());
     }
 
-    virtual void print(std::ostream &os, unsigned int depth)
+    virtual void print(std::ostream &os, unsigned int depth) const
     {
 	os << indent(depth) << "^ power" << std::endl;
 	left->print(os, depth+1);
