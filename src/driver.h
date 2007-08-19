@@ -36,11 +36,11 @@ public:
     std::string streamname;
 
     /** Invoke the scanner and parser for a stream.
-     * @param s		input stream
+     * @param in	input stream
      * @param sname	stream name for error messages
      * @return		true if successfully parsed
      */
-    bool parse_stream(std::istream& s,
+    bool parse_stream(std::istream& in,
 		      const std::string& sname = "stream input");
 
     /** Invoke the scanner and parser on an input string.

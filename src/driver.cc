@@ -17,7 +17,7 @@ Driver::Driver(class CalcContext& _calc)
 {
 }
 
-bool Driver::parse_stream(std::istream &in, const std::string &sname)
+bool Driver::parse_stream(std::istream& in, const std::string& sname)
 {
     streamname = sname;
 
