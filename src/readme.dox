@@ -17,13 +17,19 @@ located in a different namespace.
 \section sec_website_license Website / License
 
 The current %example package can be downloaded from
-http://idlebox.net/2007/cpp-flex-bison/
+http://idlebox.net/2007/flex-bison-cpp-example/
+
+The following just mean you can copy the code for whatever purpose without
+crediting me.
 
 The parts of the %example code written by myself are released under the public
-domain or at your option under the <a href="http://sam.zoy.org/wtfpl/">Do What
-The Fuck You Want To Public License (WTFPL)</a> which can be found in the file
-COPYING. There are some special GPL license exceptions for the included bison
-and flex source files.
+domain or, at your option, under the <a href="http://sam.zoy.org/wtfpl/">Do
+What The Fuck You Want To Public License (WTFPL)</a>, which can be found in the
+file COPYING. There are some special GPL license exceptions for the included
+bison and flex source files.
+
+The idea and method of this %example is based on code from
+http://ioctl.org/jan/bison/
 
 \section sec_whyuse Why use these old tools?
 
@@ -49,7 +55,7 @@ code.
 
 The src directory contains the following source files:
 
-\li scanner.ll contains the flex source for the c++ lexical scanner.
+\li scanner.ll contains the flex source for the C++ lexical scanner.
 \li scanner.cc is generated from scanner.ll by flex.
 \li scanner.h defines the lexer class example::Scanner.
 \li FlexLexer.h copied from flex distribution. Defines the abstract lexer class.
@@ -139,4 +145,3 @@ example::Driver::parse_stream(), example::Driver::parse_file() and
 example::Driver::parse_string().
 
 */
-
