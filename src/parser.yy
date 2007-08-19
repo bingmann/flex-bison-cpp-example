@@ -1,4 +1,5 @@
 /* $Id$ -*- mode: c++ -*- */
+/** \file parser.yy Contains the example Bison parser source */
 
 %{ /*** C/C++ Declarations ***/
 

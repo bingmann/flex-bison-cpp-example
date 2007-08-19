@@ -1,4 +1,5 @@
 /* $Id$ -*- mode: c++ -*- */
+/** \file scanner.ll Define the example Flex lexical scanner */
 
 %{ /*** C/C++ Declarations ***/
 

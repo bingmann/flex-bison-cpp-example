@@ -38,7 +38,7 @@
 #include "y.tab.h"
 
 /* User implementation prologue.  */
-#line 76 "parser.yy"
+#line 77 "parser.yy"
 
 
 #include "driver.h"
@@ -211,47 +211,47 @@ namespace example
     switch (yytype)
       {
         case 5: /* "\"string\"" */
-#line 70 "parser.yy"
+#line 71 "parser.yy"
 	{ delete (yyvaluep->stringVal); };
 #line 217 "parser.cc"
 	break;
       case 17: /* "constant" */
-#line 71 "parser.yy"
+#line 72 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 222 "parser.cc"
 	break;
       case 18: /* "variable" */
-#line 71 "parser.yy"
+#line 72 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 227 "parser.cc"
 	break;
       case 19: /* "atomexpr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 232 "parser.cc"
 	break;
       case 20: /* "powexpr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 237 "parser.cc"
 	break;
       case 21: /* "unaryexpr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 242 "parser.cc"
 	break;
       case 22: /* "mulexpr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 247 "parser.cc"
 	break;
       case 23: /* "addexpr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 252 "parser.cc"
 	break;
       case 24: /* "expr" */
-#line 72 "parser.yy"
+#line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
 #line 257 "parser.cc"
 	break;
@@ -329,7 +329,7 @@ namespace example
 
 
     /* User initialization code.  */
-    #line 40 "/tdata/home/Desktop/cpp-flex-bison/trunk/src/parser.yy"
+    #line 41 "/tdata/home/Desktop/cpp-flex-bison/trunk/src/parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
@@ -451,21 +451,21 @@ namespace example
     switch (yyn)
       {
 	  case 2:
-#line 94 "parser.yy"
+#line 95 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].integerVal));
 	   }
     break;
 
   case 3:
-#line 98 "parser.yy"
+#line 99 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].doubleVal));
 	   }
     break;
 
   case 4:
-#line 103 "parser.yy"
+#line 104 "parser.yy"
     {
 	       if (!driver.calc.existsVariable(*(yysemantic_stack_[(1) - (1)].stringVal))) {
 		   error(yyloc, std::string("Unknown variable \"") + *(yysemantic_stack_[(1) - (1)].stringVal) + "\"");
@@ -480,119 +480,119 @@ namespace example
     break;
 
   case 5:
-#line 116 "parser.yy"
+#line 117 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	   }
     break;
 
   case 6:
-#line 120 "parser.yy"
+#line 121 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	   }
     break;
 
   case 7:
-#line 124 "parser.yy"
+#line 125 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(3) - (2)].calcnode);
 	   }
     break;
 
   case 8:
-#line 129 "parser.yy"
+#line 130 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	  }
     break;
 
   case 9:
-#line 133 "parser.yy"
+#line 134 "parser.yy"
     {
 	      (yyval.calcnode) = new CNPower((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 10:
-#line 138 "parser.yy"
+#line 139 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	    }
     break;
 
   case 11:
-#line 142 "parser.yy"
+#line 143 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(2) - (2)].calcnode);
 	    }
     break;
 
   case 12:
-#line 146 "parser.yy"
+#line 147 "parser.yy"
     {
 		(yyval.calcnode) = new CNNegate((yysemantic_stack_[(2) - (2)].calcnode));
 	    }
     break;
 
   case 13:
-#line 151 "parser.yy"
+#line 152 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	  }
     break;
 
   case 14:
-#line 155 "parser.yy"
+#line 156 "parser.yy"
     {
 	      (yyval.calcnode) = new CNMultiply((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 15:
-#line 159 "parser.yy"
+#line 160 "parser.yy"
     {
 	      (yyval.calcnode) = new CNDivide((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 16:
-#line 163 "parser.yy"
+#line 164 "parser.yy"
     {
 	      (yyval.calcnode) = new CNModulo((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 17:
-#line 168 "parser.yy"
+#line 169 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	  }
     break;
 
   case 18:
-#line 172 "parser.yy"
+#line 173 "parser.yy"
     {
 	      (yyval.calcnode) = new CNAdd((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 19:
-#line 176 "parser.yy"
+#line 177 "parser.yy"
     {
 	      (yyval.calcnode) = new CNSubtract((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
 	  }
     break;
 
   case 20:
-#line 181 "parser.yy"
+#line 182 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
 	  }
     break;
 
   case 21:
-#line 186 "parser.yy"
+#line 187 "parser.yy"
     {
 		 driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] = (yysemantic_stack_[(3) - (3)].calcnode)->evaluate();
 		 std::cout << "Setting variable " << *(yysemantic_stack_[(3) - (1)].stringVal)
@@ -603,14 +603,14 @@ namespace example
     break;
 
   case 25:
-#line 198 "parser.yy"
+#line 199 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
 	  }
     break;
 
   case 26:
-#line 202 "parser.yy"
+#line 203 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
 	  }
@@ -971,9 +971,9 @@ namespace example
   const unsigned char
   Parser::yyrline_[] =
   {
-         0,    93,    93,    97,   102,   115,   119,   123,   128,   132,
-     137,   141,   145,   150,   154,   158,   162,   167,   171,   175,
-     180,   185,   194,   195,   196,   197,   201
+         0,    94,    94,    98,   103,   116,   120,   124,   129,   133,
+     138,   142,   146,   151,   155,   159,   163,   168,   172,   176,
+     181,   186,   195,   196,   197,   198,   202
   };
 
   // Print the state stack on the debug stream.
@@ -1061,7 +1061,7 @@ namespace example
 
 } // namespace example
 
-#line 208 "parser.yy"
+#line 209 "parser.yy"
  /*** Additional Code ***/
 
 void example::Parser::error(const Parser::location_type& l,

@@ -48,7 +48,7 @@ namespace example
 }
 
 /* First part of user declarations.  */
-#line 3 "parser.yy"
+#line 4 "parser.yy"
  /*** C/C++ Declarations ***/
 
 #include <stdio.h>
@@ -111,7 +111,7 @@ namespace example
     /// Symbol semantic values.
 #ifndef YYSTYPE
     union semantic_type
-#line 55 "parser.yy"
+#line 56 "parser.yy"
 {
     int  			integerVal;
     double 			doubleVal;
