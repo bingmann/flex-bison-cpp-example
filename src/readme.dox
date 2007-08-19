@@ -20,7 +20,7 @@ The current %example package can be downloaded from
 http://idlebox.net/2007/flex-bison-cpp-example/
 
 The following just mean you can copy the %example code into your program or use
-it for whatever purpose without crediting me (thou I would really like it if
+it for whatever purpose without crediting me (though I would really like it if
 you did):
 
 The parts of the %example code written by myself are released into the public
@@ -32,7 +32,7 @@ source files from the bison and flex distributions.
 The idea and method of this %example is based on code from
 http://ioctl.org/jan/bison/
 
-\section sec_whyuse Why use these old tools?
+\section sec_whyuse Why Use These Old Tools?
 
 Well, they are here to stay and they work well. These days there are much more
 sophisticated C++ parser generation frameworks around:
