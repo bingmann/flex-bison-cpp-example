@@ -2,4 +2,4 @@
 
 SUBDIRS = src
 
-EXTRA_DIST = Doxyfile doxygen.css doxygen-html
+EXTRA_DIST = Doxyfile doxygen.css doxygen-html/*
