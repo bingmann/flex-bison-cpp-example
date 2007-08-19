@@ -6,7 +6,7 @@ AC_INIT([flex-bison-cpp-example], [0.1])
 AC_CONFIG_SRCDIR([src/exprtest.cc])
 AC_CONFIG_AUX_DIR([scripts])
 
-AM_INIT_AUTOMAKE(foreign)
+AM_INIT_AUTOMAKE
 # AM_MAINTAINER_MODE
 
 if test "$CFLAGS" == ""; then
