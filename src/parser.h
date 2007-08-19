@@ -132,9 +132,10 @@ namespace example
       /* Tokens.  */
    enum yytokentype {
      END = 0,
-     INTEGER = 258,
-     DOUBLE = 259,
-     STRING = 260
+     EOL = 258,
+     INTEGER = 259,
+     DOUBLE = 260,
+     STRING = 261
    };
 
     };

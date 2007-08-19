@@ -87,6 +87,7 @@ typedef example::Parser::token_type token_type;
  /* gobble up end-of-lines */
 \n {
     yylloc->lines(yyleng); yylloc->step();
+    return token::EOL;
 }
 
  /* pass all other characters up to bison */

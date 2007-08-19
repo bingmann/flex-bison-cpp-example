@@ -475,7 +475,7 @@ static yyconst flex_int16_t yy_chk[24] =
 
 static yyconst flex_int16_t yy_rule_linenum[7] =
     {   0,
-       67,   72,   77,   83,   88,   93
+       67,   72,   77,   83,   88,   94
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -840,12 +840,13 @@ YY_RULE_SETUP
 #line 88 "scanner.ll"
 {
     yylloc->lines(yyleng); yylloc->step();
+    return token::EOL;
 }
 	YY_BREAK
 /* pass all other characters up to bison */
 case 6:
 YY_RULE_SETUP
-#line 93 "scanner.ll"
+#line 94 "scanner.ll"
 {
     return static_cast<token_type>(*yytext);
 }
@@ -853,10 +854,10 @@ YY_RULE_SETUP
 /*** END EXAMPLE - Change the example lexer rules above ***/
 case 7:
 YY_RULE_SETUP
-#line 99 "scanner.ll"
+#line 100 "scanner.ll"
 ECHO;
 	YY_BREAK
-#line 860 "scanner.cc"
+#line 861 "scanner.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1887,7 +1888,7 @@ void Examplefree (void * ptr )
 
 /* %ok-for-header */
 
-#line 99 "scanner.ll"
+#line 100 "scanner.ll"
 
 
 

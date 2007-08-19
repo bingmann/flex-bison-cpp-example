@@ -61,6 +61,7 @@
 }
 
 %token			END	     0	"end of file"
+%token			EOL		"end of line"
 %token <integerVal> 	INTEGER		"integer"
 %token <doubleVal> 	DOUBLE		"double"
 %token <stringVal> 	STRING		"string"
@@ -126,7 +127,7 @@ atomexpr : constant
 	       $$ = $2;
 	   }
 
-powexpr : atomexpr
+powexpr	: atomexpr
           {
 	      $$ = $1;
 	  }
@@ -193,9 +194,16 @@ assignment : STRING '=' expr
 	     }
 
 start	: /* empty */
+        | start ';'
+        | start EOL
 	| start assignment ';'
+	| start assignment EOL
 	| start assignment END
         | start expr ';'
+          {
+	      driver.calc.expressions.push_back($2);
+	  }
+        | start expr EOL
           {
 	      driver.calc.expressions.push_back($2);
 	  }

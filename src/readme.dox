@@ -169,7 +169,7 @@ It can be started interactively and will process expressions entered on the
 console. The expression's parse tree is printed and then evaluated. Here some examples:
 
 <pre class="fragment">
-$ ./exprtest
+$ <span class="keywordflow">./exprtest</span>
 Reading expressions from stdin
 input: <span class="keywordflow">4 * 1.5 + 3 * (2 ^ 4 - 4)</span>
 tree:
