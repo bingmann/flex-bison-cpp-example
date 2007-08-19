@@ -10,6 +10,7 @@ int main(int argc, char *argv[])
 {
     CalcContext calc;
     example::Driver driver(calc);
+    bool readfile = false;
 
     for(int ai = 1; ai < argc; ++ai)
     {
@@ -30,6 +31,7 @@ int main(int argc, char *argv[])
 		return 0;
 	    }
 
+	    calc.clearExpressions();
 	    bool result = driver.parse_stream(infile, argv[ai]);
 	    if (result)
 	    {
@@ -44,9 +46,12 @@ int main(int argc, char *argv[])
 			      << std::endl;
 		}
 	    }
-	    return 0;
+
+	    readfile = true;
 	}
     }
+
+    if (readfile) return 0;
     
     std::cout << "Reading expressions from stdin" << std::endl;
 

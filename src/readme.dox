@@ -5,13 +5,13 @@
 
 \section sec_summary Summary
 
-This %example shows how to use \b both <a
+This %example shows how to use both <a
 href="http://flex.sourceforge.net/">flex</a> and <a
 href="http://www.gnu.org/software/bison/">bison</a> in C++ mode. This way both
 lexer and parser code and data is encapsulated into classes. Thus the lexer and
 parser are fully re-entrant, because all state variables are contained in the
 class objects. Furthermore multiple different lexer-parser pairs can easily be
-linked into one binary, because they just have different class names and/or are
+linked into one binary, because they have different class names and/or are
 located in a different namespace.
 
 \section sec_website_license Website / License
@@ -19,14 +19,15 @@ located in a different namespace.
 The current %example package can be downloaded from
 http://idlebox.net/2007/flex-bison-cpp-example/
 
-The following just mean you can copy the code for whatever purpose without
-crediting me.
+The following just mean you can copy the %example code into your program or use
+it for whatever purpose without crediting me (thou I would really like it if
+you did):
 
-The parts of the %example code written by myself are released under the public
+The parts of the %example code written by myself are released into the public
 domain or, at your option, under the <a href="http://sam.zoy.org/wtfpl/">Do
 What The Fuck You Want To Public License (WTFPL)</a>, which can be found in the
 file COPYING. There are some special GPL license exceptions for the included
-bison and flex source files.
+source files from the bison and flex distributions.
 
 The idea and method of this %example is based on code from
 http://ioctl.org/jan/bison/
@@ -37,9 +38,10 @@ Well, they are here to stay and they work well. These days there are much more
 sophisticated C++ parser generation frameworks around:
 
 \li Most well-known is the <a href="http://spirit.sourceforge.net">Boost.Spirit
-parser framework</a> \li and the <a href="http://www.antlr.org">ANTLR parser
-generator</a> \li Less well known is the <a
-href="http://cttl.sourceforge.net/">Common Text Transformation Library</a>.
+parser framework</a>
+\li and the <a href="http://www.antlr.org">ANTLR parser generator</a>.
+\li Less well known is the <a href="http://cttl.sourceforge.net/">Common Text
+Transformation Library</a>.
 
 All these libraries do good jobs when you need to generate parsers for more
 difficult grammars.
@@ -48,28 +50,32 @@ However if you write a program with one of the frameworks above, then your
 users need that parser framework installed to compile your program. But <b>flex
 and bison require no compile-time dependencies</b>, because they generate fully
 autonomous source code. (And flex and bison are installed almost everywhere.) 
-So far I have not found any modern parser generator which writes independent
+So far I have not found any modern parser generator which outputs independent
 code.
 
 \section sec_source_files Source and Generated Files
 
-The src directory contains the following source files:
+The src directory contains the following source files. Note that some of them
+are automatically generated from others.
 
 \li scanner.ll contains the flex source for the C++ lexical scanner.
 \li scanner.cc is generated from scanner.ll by flex.
 \li scanner.h defines the lexer class example::Scanner.
-\li FlexLexer.h copied from flex distribution. Defines the abstract lexer class.
+\li FlexLexer.h copied from flex distribution. Defines the abstract lexer
+class.
 
 \li parser.yy is the %example bison parser grammar.
 \li parser.cc generated from parser.yy by bison.
 \li parser.h generated from parser.yy by bison.
 \li y.tab.h contains nothing. Just forwards to parser.h
 
-\li location.hh copied by bison. Contains something required by the parser class.
+\li location.hh installed by bison. Contains something required by the parser
+class.
 \li position.hh same.
 \li stack.hh same.
 
-\li driver.h defines the example::Driver class which puts together lexer and parser.
+\li driver.h defines the example::Driver class, which puts together lexer and
+parser.
 \li driver.cc implementation for driver.h
 
 \li expression.h defines the example's calculator node classes.
@@ -78,10 +84,11 @@ The src directory contains the following source files:
 \li readme.dox doxygen explanation text, which you are reading right now.
 
 So if you wish to create a program using a C++ flex lexer and bison parser, you
-need the following files:
+need to copy the following files:
 \li scanner.ll, scanner.h, FlexLexer.h
 \li parser.yy, y.tab.h
-\li location.hh, position.hh, stack.hh (are created by bison when run on the grammar)
+\li location.hh, position.hh, stack.hh (are created by bison when run on the
+grammar)
 \li driver.h, driver.cc
 
 \subsection subsec_namespacelibrary Namespace and Library
@@ -100,27 +107,31 @@ ultimately in the code itself.
 
 \subsection subsec_overview_scanner Scanner
 
-The input is first converted by the lexical scanner into tokens. The scanner is
-defined by the code in scanner.ll . From this file flex generates the file
-scanner.cc which mainly contains a function called yylex(). This function
-returns the next token for the parser. For a C++ scanner the yylex() function
-is contained in a class, which is named yyFlexLexer by default. It is declared
-in the FlexLexer.h and is derived from the abstract FlexLexer class.
+The input stream is first converted by the lexical scanner into tokens. The
+scanner is defined by the list of regular expressions in scanner.ll . From this
+file flex generates the file scanner.cc, which mainly contains a function
+called yylex(). This function returns the next token for the parser. For a C++
+scanner the yylex() function is contained in a class, which is named
+yyFlexLexer by default. It is declared in the FlexLexer.h and is derived from
+the abstract FlexLexer class.
 
-By defining the macro yyFlexLexer -> ExampleFlexLexer in scanner.h, the default
+By defining the macro yyFlexLexer => ExampleFlexLexer in scanner.h, the default
 name of the scanner class is changed. Furthermore to extend yylex()'s parameter
 list, the class example::Scanner is derived from the ExampleFlexLexer class. It
-is mainly a forwarding class. Using the macro YY_DECL the yylex() function
-generated by flex is renamed to example::Scanner::lex().
+is mainly a forwarding class. By defining the macro YY_DECL, the yylex()
+function generated by flex is renamed to example::Scanner::lex().
 
 Another change to the default flex code is that the token type is changed from
-int to the enum example::Parser::token defined by parser.
+\c int to the enum example::Parser::token defined by parser.
 
 \subsection subsec_overview_parser Parser
 
 Bison's support for C++ is much more sophisticated. In C++ mode it generates a
 class named example::Parser, which is located in parser.cc and declared in
-parser.h . The header file also defines the scanner tokens.
+parser.h . The header file also defines the scanner tokens, which must be
+returned by the flex scanner's regular expression rules. Bison's C++ skeleton
+also installs the three .hh files, which contain utility classes required by
+the parser.
 
 In the %example calculator the bison code constructs a calculation node
 tree. The tree's nodes are derived from CalcNode and are evaluated to output
@@ -136,12 +147,61 @@ scanner object contained within the driver.
 
 The example::Driver object can be accessed by the bison actions. Therefore it
 will contain a reference to the data classes filled by the parser's rules. In
-the example it contains a reference to the CalcContext. Thus a refernce to a
+the %example it contains a reference to the CalcContext. Thus a refernce to a
 CalcContext must be given to the constructor of example::Driver. This
-CalcContext object will then be filled with the parsed data.
+CalcContext object will be filled with the parsed data.
 
 To initiate parsing the example::Driver class contains the three functions
 example::Driver::parse_stream(), example::Driver::parse_file() and
 example::Driver::parse_string().
+
+\section sec_example Example Calculator
+
+The %example lexer and grammar is a simple floating point arithmetic
+calculator. It follows the usual operator precedence rules (sometimes called
+BODMAS or PEMDAS): Parentheses, Exponentation, Multiplication/Division,
+Addition/Subtraction.
+
+Besides these simple arithmetic operators, the program also supports
+variables. These can be assigned a value and used in subsequent expressions.
+
+It can be started interactively and will process expressions entered on the
+console. The expression's parse tree is printed and then evaluated. Here some examples:
+
+<pre class="fragment">
+$ ./exprtest
+Reading expressions from stdin
+input: <span class="keywordflow">4 * 1.5 + 3 * (2 ^ 4 - 4)</span>
+tree:
++ add
+  %* multiply
+    4
+    1.5
+  %* multiply
+    3
+    %- subtract
+      ^ power
+        2
+        4
+      4
+evaluated: 42
+input: <span class="keywordflow">v = (2 ^ 4 - 4)</span>
+Setting variable v = 12
+input: <span class="keywordflow">3.5 * a</span>
+input:1.6: Unknown variable "a"
+input: <span class="keywordflow">3.5 * v</span>
+tree:
+%* multiply
+  3.5
+  12
+evaluated: 42
+input: <span class="keywordflow">5 + * 6</span>
+input:1.4: syntax error, unexpected '*'
+input: <span class="keywordflow">5 + (4 * 4</span>
+input:1.10-9: syntax error, unexpected end of file, expecting ')'
+</pre>
+
+The exprtest can also be used to process text files containing expressions.
+
 
 */
