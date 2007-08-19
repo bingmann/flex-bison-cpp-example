@@ -166,7 +166,8 @@ Besides these simple arithmetic operators, the program also supports
 variables. These can be assigned a value and used in subsequent expressions.
 
 It can be started interactively and will process expressions entered on the
-console. The expression's parse tree is printed and then evaluated. Here some examples:
+console. The expression's parse tree is printed and then evaluated. Here some
+examples:
 
 <pre class="fragment">
 $ <span class="keywordflow">./exprtest</span>
@@ -201,7 +202,55 @@ input: <span class="keywordflow">5 + (4 * 4</span>
 input:1.10-9: syntax error, unexpected end of file, expecting ')'
 </pre>
 
-The exprtest can also be used to process text files containing expressions.
+The exprtest can also be used to process text files containing
+expressions. Within the file each line is parsed as an expression. Multiple
+expressions can be put into one line by terminating them with a semicolon
+'<tt>;</tt>'. The exprtest outputs a parse tree for each parsed non-assignment
+line.
 
+\verbatim
+
+v = (2 ^ 4 - 4); e = 2.71828
+
+4 * 1.5 + 3 * v
+
+6 * (2 * 2) ^ 2 / 2
+
+\endverbatim
+
+The above %example file (included as <tt>exprtest.txt</tt>) can be processed
+by calling <tt>./exprtest exprtest.txt</tt>. The program outputs the following
+evaluation:
+
+\verbatim
+Setting variable v = 12
+Setting variable e = 2.71828
+Expressions:
+[0]:
+tree:
++ add
+  * multiply
+    4
+    1.5
+  * multiply
+    3
+    12
+evaluated: 42
+[1]:
+tree:
+/ divide
+  * multiply
+    6
+    ^ power
+      * multiply
+        2
+        2
+      2
+  2
+evaluated: 48
+\endverbatim
+
+\author Timo Bingmann
+\date 2007-08-20
 
 */
