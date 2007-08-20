@@ -475,7 +475,7 @@ static yyconst flex_int16_t yy_chk[24] =
 
 static yyconst flex_int16_t yy_rule_linenum[7] =
     {   0,
-       67,   72,   77,   83,   88,   94
+       70,   75,   80,   86,   91,   97
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -509,6 +509,9 @@ typedef example::Parser::token_type token_type;
  * by default returns 0, which is not of token_type. */
 #define yyterminate() return token::END
 
+/* This disables inclusion of unistd.h, which is not available on win32. */
+#define YY_NO_UNISTD_H
+
 /*** Flex Declarations and Options ***/
 /* enable c++ scanner class generation */
 /* change the name of the scanner class. results in "ExampleFlexLexer" */
@@ -519,9 +522,9 @@ typedef example::Parser::token_type token_type;
 /* enables the use of start condition stacks */
 /* The following paragraph suffices to track locations accurately. Each time
  * yylex is invoked, the begin position is moved onto the end position. */
-#line 51 "scanner.ll"
+#line 54 "scanner.ll"
 #define YY_USER_ACTION  yylloc->columns(yyleng);
-#line 525 "scanner.cc"
+#line 528 "scanner.cc"
 
 #define INITIAL 0
 
@@ -678,7 +681,7 @@ YY_DECL
 	register int yy_act;
     
 /* %% [7.0] user's declarations go here */
-#line 54 "scanner.ll"
+#line 57 "scanner.ll"
 
 
  /* code to place at the beginning of yylex() */
@@ -692,7 +695,7 @@ YY_DECL
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
-#line 696 "scanner.cc"
+#line 699 "scanner.cc"
 
 	if ( !(yy_init) )
 		{
@@ -803,7 +806,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 67 "scanner.ll"
+#line 70 "scanner.ll"
 {
     yylval->integerVal = atoi(yytext);
     return token::INTEGER;
@@ -811,7 +814,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 72 "scanner.ll"
+#line 75 "scanner.ll"
 {
     yylval->doubleVal = atof(yytext);
     return token::DOUBLE;
@@ -819,7 +822,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 77 "scanner.ll"
+#line 80 "scanner.ll"
 {
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::STRING;
@@ -828,7 +831,7 @@ YY_RULE_SETUP
 /* gobble up white-spaces */
 case 4:
 YY_RULE_SETUP
-#line 83 "scanner.ll"
+#line 86 "scanner.ll"
 {
     yylloc->step();
 }
@@ -837,7 +840,7 @@ YY_RULE_SETUP
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 88 "scanner.ll"
+#line 91 "scanner.ll"
 {
     yylloc->lines(yyleng); yylloc->step();
     return token::EOL;
@@ -846,7 +849,7 @@ YY_RULE_SETUP
 /* pass all other characters up to bison */
 case 6:
 YY_RULE_SETUP
-#line 94 "scanner.ll"
+#line 97 "scanner.ll"
 {
     return static_cast<token_type>(*yytext);
 }
@@ -854,10 +857,10 @@ YY_RULE_SETUP
 /*** END EXAMPLE - Change the example lexer rules above ***/
 case 7:
 YY_RULE_SETUP
-#line 100 "scanner.ll"
+#line 103 "scanner.ll"
 ECHO;
 	YY_BREAK
-#line 861 "scanner.cc"
+#line 864 "scanner.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1888,7 +1891,7 @@ void Examplefree (void * ptr )
 
 /* %ok-for-header */
 
-#line 100 "scanner.ll"
+#line 103 "scanner.ll"
 
 
 

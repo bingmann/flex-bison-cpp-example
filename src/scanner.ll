@@ -22,6 +22,10 @@ typedef example::Parser::token_type token_type;
  * by default returns 0, which is not of token_type. */
 #define yyterminate() return token::END
 
+/* This disables inclusion of unistd.h, which is not available under Visual C++
+ * on Win32. The C++ scanner uses STL streams instead. */
+#define YY_NO_UNISTD_H
+
 %}
 
 /*** Flex Declarations and Options ***/
