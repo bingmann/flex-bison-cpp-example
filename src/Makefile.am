@@ -21,4 +21,5 @@ LIBS = libexampleparser.a
 # lex.yy.cc and the automake ylwrap script only checks for lex.yy.c
 AM_LFLAGS = -olex.yy.c
 
-EXTRA_DIST = readme.dox exprtest.txt
+EXTRA_DIST = readme.dox exprtest.txt \
+	exprtest.vcproj libexampleparser.vcproj

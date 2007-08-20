@@ -162,7 +162,9 @@ target_alias = @target_alias@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 SUBDIRS = src
-EXTRA_DIST = Doxyfile doxygen.css doxygen-html/*
+EXTRA_DIST = Doxyfile doxygen.css doxygen-html/*        \
+	flex-bison-cpp-example.sln
+
 all: all-recursive
 
 .SUFFIXES:
