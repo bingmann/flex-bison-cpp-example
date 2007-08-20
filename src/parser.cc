@@ -329,7 +329,7 @@ namespace example
 
 
     /* User initialization code.  */
-    #line 41 "/tdata/home/Desktop/cpp-flex-bison/trunk/src/parser.yy"
+    #line 41 "/tdata/home/Desktop/flex-bison-cpp-example/trunk/src/parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
