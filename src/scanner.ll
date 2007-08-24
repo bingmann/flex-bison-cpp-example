@@ -61,9 +61,6 @@ typedef example::Parser::token_type token_type;
 %{
     // reset location
     yylloc->step();
-
-    // variable for quoted strings
-    std::string	quotedstring;
 %}
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
