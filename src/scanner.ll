@@ -5,7 +5,6 @@
 
 #include <string>
 
-#include "parser.h"
 #include "scanner.h"
 
 /* import the parser's token type into a local typedef */

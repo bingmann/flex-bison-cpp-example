@@ -5,7 +5,6 @@
 #include <sstream>
 
 #include "driver.h"
-#include "parser.h"
 #include "scanner.h"
 
 namespace example {
