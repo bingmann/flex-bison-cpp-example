@@ -475,7 +475,7 @@ static yyconst flex_int16_t yy_chk[24] =
 
 static yyconst flex_int16_t yy_rule_linenum[7] =
     {   0,
-       71,   76,   81,   87,   92,   98
+       68,   73,   78,   84,   89,   95
     } ;
 
 /* The intent behind this definition is that it'll catch
@@ -690,13 +690,10 @@ YY_DECL
     // reset location
     yylloc->step();
 
-    // variable for quoted strings
-    std::string	quotedstring;
-
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
-#line 700 "scanner.cc"
+#line 697 "scanner.cc"
 
 	if ( !(yy_init) )
 		{
@@ -807,7 +804,7 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 71 "scanner.ll"
+#line 68 "scanner.ll"
 {
     yylval->integerVal = atoi(yytext);
     return token::INTEGER;
@@ -815,7 +812,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 76 "scanner.ll"
+#line 73 "scanner.ll"
 {
     yylval->doubleVal = atof(yytext);
     return token::DOUBLE;
@@ -823,7 +820,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 81 "scanner.ll"
+#line 78 "scanner.ll"
 {
     yylval->stringVal = new std::string(yytext, yyleng);
     return token::STRING;
@@ -832,7 +829,7 @@ YY_RULE_SETUP
 /* gobble up white-spaces */
 case 4:
 YY_RULE_SETUP
-#line 87 "scanner.ll"
+#line 84 "scanner.ll"
 {
     yylloc->step();
 }
@@ -841,7 +838,7 @@ YY_RULE_SETUP
 case 5:
 /* rule 5 can match eol */
 YY_RULE_SETUP
-#line 92 "scanner.ll"
+#line 89 "scanner.ll"
 {
     yylloc->lines(yyleng); yylloc->step();
     return token::EOL;
@@ -850,7 +847,7 @@ YY_RULE_SETUP
 /* pass all other characters up to bison */
 case 6:
 YY_RULE_SETUP
-#line 98 "scanner.ll"
+#line 95 "scanner.ll"
 {
     return static_cast<token_type>(*yytext);
 }
@@ -858,10 +855,10 @@ YY_RULE_SETUP
 /*** END EXAMPLE - Change the example lexer rules above ***/
 case 7:
 YY_RULE_SETUP
-#line 104 "scanner.ll"
+#line 101 "scanner.ll"
 ECHO;
 	YY_BREAK
-#line 865 "scanner.cc"
+#line 862 "scanner.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1892,7 +1889,7 @@ void Examplefree (void * ptr )
 
 /* %ok-for-header */
 
-#line 104 "scanner.ll"
+#line 101 "scanner.ll"
 
 
 
