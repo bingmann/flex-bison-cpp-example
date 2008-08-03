@@ -23,3 +23,6 @@ AM_LFLAGS = -olex.yy.c
 
 EXTRA_DIST = readme.dox exprtest.txt \
 	exprtest.vcproj libexampleparser.vcproj
+
+extraclean:
+	rm -f parser.cc parser.h scanner.cc
