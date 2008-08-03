@@ -62,8 +62,8 @@ class FlexLexer {
 public:
     virtual ~FlexLexer()	{ }
 
-    const char* YYText()	{ return yytext; }
-    int YYLeng()		{ return yyleng; }
+    const char* YYText() const	{ return yytext; }
+    int YYLeng() const		{ return yyleng; }
 
     virtual void
     yy_switch_to_buffer(struct yy_buffer_state* new_buffer) = 0;
@@ -99,12 +99,12 @@ protected:
 };
 
 }
-#endif
+#endif // FLEXLEXER_H
 
 #if defined(yyFlexLexer) || ! defined(yyFlexLexerOnce)
 // Either this is the first time through (yyFlexLexerOnce not defined),
 // or this is a repeated include to define a different flavor of
-// yyFlexLexer, as discussed in the flex man page.
+// yyFlexLexer, as discussed in the flex manual.
 #define yyFlexLexerOnce
 
 extern "C++" {
@@ -125,18 +125,19 @@ public:
     void yyrestart(FLEX_STD istream* s);
 
     void yypush_buffer_state(struct yy_buffer_state* new_buffer);
-    void yypop_buffer_state(void);
+    void yypop_buffer_state();
 
     virtual int yylex();
     virtual void switch_streams(FLEX_STD istream* new_in,
 				FLEX_STD ostream* new_out);
+    virtual int yywrap();
 
 protected:
     virtual int LexerInput(char* buf, int max_size);
     virtual void LexerOutput(const char* buf, int size);
-    virtual void LexerError(const char msg[]);
+    virtual void LexerError(const char* msg);
 
-    void yyunput(int c, register char* buf_ptr);
+    void yyunput(int c, char* buf_ptr);
     int yyinput();
 
     void yy_load_buffer_state();
@@ -204,4 +205,4 @@ protected:
 
 } // extern "C++"
 
-#endif
+#endif // yyFlexLexer || ! yyFlexLexerOnce
