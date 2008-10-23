@@ -1,3 +1,13 @@
+2008-10-23	Timo Bingmann
+
+	* FlexLexer.h, scanner.ll: Corrected a very subtle bug with the
+	newly introduced virtual yywrap() function in the FlexLexer
+	class. Depending on how the header was included, the class
+	contained the virtual yywrap() function or not. These differing
+	class declarations lead to very strange NULL pointer exceptions,
+	because the different compiled objects assume different class
+	memory layouts. Ultimately the exprtest program always segfaulted.
+
 2008-08-03	Timo Bingmann
 	
 	* scanner.ll, y.tab.h: Fixing compilation problem which was

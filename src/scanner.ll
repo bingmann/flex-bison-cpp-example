@@ -11,12 +11,6 @@
 typedef example::Parser::token token;
 typedef example::Parser::token_type token_type;
 
-/* Work around an incompatibility in flex (at least versions 2.5.31 through
- * 2.5.33): it generates code that does not conform to C89.  See Debian bug
- * 333231 <http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=333231>.  */
-#undef yywrap
-#define yywrap()	1
-
 /* By default yylex returns int, we use token_type. Unfortunately yyterminate
  * by default returns 0, which is not of token_type. */
 #define yyterminate() return token::END
@@ -43,7 +37,7 @@ typedef example::Parser::token_type token_type;
 %option debug
 
 /* no support for include files is planned */
-%option noyywrap nounput 
+%option yywrap nounput 
 
 /* enables the use of start condition stacks */
 %option stack
@@ -130,4 +124,15 @@ int ExampleFlexLexer::yylex()
 {
     std::cerr << "in ExampleFlexLexer::yylex() !" << std::endl;
     return 0;
+}
+
+/* When the scanner receives an end-of-file indication from YY_INPUT, it then
+ * checks the yywrap() function. If yywrap() returns false (zero), then it is
+ * assumed that the function has gone ahead and set up `yyin' to point to
+ * another input file, and scanning continues. If it returns true (non-zero),
+ * then the scanner terminates, returning 0 to its caller. */
+
+int ExampleFlexLexer::yywrap()
+{
+    return 1;
 }

@@ -26,3 +26,5 @@ EXTRA_DIST = readme.dox exprtest.txt \
 
 extraclean:
 	rm -f parser.cc parser.h scanner.cc
+
+rebuild: clean extraclean all
