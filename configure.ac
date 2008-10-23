@@ -2,7 +2,7 @@
 
 AC_PREREQ(2.59)
 
-AC_INIT([flex-bison-cpp-example], [0.1.2])
+AC_INIT([flex-bison-cpp-example], [0.1.3])
 AC_CONFIG_SRCDIR([src/exprtest.cc])
 AC_CONFIG_AUX_DIR([scripts])
 
