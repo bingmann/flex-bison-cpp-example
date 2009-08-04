@@ -131,7 +131,7 @@ powexpr	: atomexpr
           {
 	      $$ = $1;
 	  }
-        | powexpr '^' atomexpr
+        | atomexpr '^' powexpr
           {
 	      $$ = new CNPower($1, $3);
 	  }

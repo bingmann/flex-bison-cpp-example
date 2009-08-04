@@ -35,7 +35,7 @@
 // Take the name prefix into account.
 #define yylex   examplelex
 
-#include "y.tab.h"
+#include "parser.h"
 
 /* User implementation prologue.  */
 #line 78 "parser.yy"
@@ -329,7 +329,7 @@ namespace example
 
 
     /* User initialization code.  */
-    #line 41 "/tdata/home/Desktop/projects/flex-bison-cpp-example/trunk/src/parser.yy"
+    #line 41 "parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
@@ -454,14 +454,14 @@ namespace example
 #line 96 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].integerVal));
-	   }
+	   ;}
     break;
 
   case 3:
 #line 100 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].doubleVal));
-	   }
+	   ;}
     break;
 
   case 4:
@@ -476,119 +476,119 @@ namespace example
 		   (yyval.calcnode) = new CNConstant( driver.calc.getVariable(*(yysemantic_stack_[(1) - (1)].stringVal)) );
 		   delete (yysemantic_stack_[(1) - (1)].stringVal);
 	       }
-	   }
+	   ;}
     break;
 
   case 5:
 #line 118 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	   }
+	   ;}
     break;
 
   case 6:
 #line 122 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	   }
+	   ;}
     break;
 
   case 7:
 #line 126 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(3) - (2)].calcnode);
-	   }
+	   ;}
     break;
 
   case 8:
 #line 131 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  }
+	  ;}
     break;
 
   case 9:
 #line 135 "parser.yy"
     {
 	      (yyval.calcnode) = new CNPower((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 10:
 #line 140 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	    }
+	    ;}
     break;
 
   case 11:
 #line 144 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(2) - (2)].calcnode);
-	    }
+	    ;}
     break;
 
   case 12:
 #line 148 "parser.yy"
     {
 		(yyval.calcnode) = new CNNegate((yysemantic_stack_[(2) - (2)].calcnode));
-	    }
+	    ;}
     break;
 
   case 13:
 #line 153 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  }
+	  ;}
     break;
 
   case 14:
 #line 157 "parser.yy"
     {
 	      (yyval.calcnode) = new CNMultiply((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 15:
 #line 161 "parser.yy"
     {
 	      (yyval.calcnode) = new CNDivide((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 16:
 #line 165 "parser.yy"
     {
 	      (yyval.calcnode) = new CNModulo((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 17:
 #line 170 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  }
+	  ;}
     break;
 
   case 18:
 #line 174 "parser.yy"
     {
 	      (yyval.calcnode) = new CNAdd((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 19:
 #line 178 "parser.yy"
     {
 	      (yyval.calcnode) = new CNSubtract((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  }
+	  ;}
     break;
 
   case 20:
 #line 183 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  }
+	  ;}
     break;
 
   case 21:
@@ -599,28 +599,28 @@ namespace example
 			   << " = " << driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] << "\n";
 		 delete (yysemantic_stack_[(3) - (1)].stringVal);
 		 delete (yysemantic_stack_[(3) - (3)].calcnode);
-	     }
+	     ;}
     break;
 
   case 28:
 #line 203 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  }
+	  ;}
     break;
 
   case 29:
 #line 207 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  }
+	  ;}
     break;
 
   case 30:
 #line 211 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  }
+	  ;}
     break;
 
 
