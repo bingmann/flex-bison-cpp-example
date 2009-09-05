@@ -22,7 +22,8 @@ LIBS = libexampleparser.a
 AM_LFLAGS = -olex.yy.c
 
 EXTRA_DIST = readme.dox exprtest.txt \
-	exprtest.vcproj libexampleparser.vcproj
+	exprtest.vcproj libexampleparser.vcproj \
+	Makefile.plain
 
 extraclean:
 	rm -f parser.cc parser.h scanner.cc
