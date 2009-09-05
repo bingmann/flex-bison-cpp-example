@@ -53,7 +53,7 @@
 #line 54 "parser.cc"
 
 
-#include "parser.h"
+#include "y.tab.h"
 
 /* User implementation prologue.  */
 

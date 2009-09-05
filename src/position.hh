@@ -133,7 +133,7 @@ namespace example {
   {
     return
       (pos1.filename == pos2.filename
-       || pos1.filename && pos2.filename && *pos1.filename == *pos2.filename)
+       || (pos1.filename && pos2.filename && *pos1.filename == *pos2.filename))
       && pos1.line == pos2.line && pos1.column == pos2.column;
   }
 
