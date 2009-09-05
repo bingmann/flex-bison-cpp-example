@@ -1,23 +1,23 @@
-/* A Bison parser, made by GNU Bison 2.3.  */
+
+/* A Bison parser, made by GNU Bison 2.4.1.  */
 
 /* Skeleton implementation for Bison LALR(1) parsers in C++
-
-   Copyright (C) 2002, 2003, 2004, 2005, 2006 Free Software Foundation, Inc.
-
-   This program is free software; you can redistribute it and/or modify
+   
+      Copyright (C) 2002, 2003, 2004, 2005, 2006, 2007, 2008 Free Software
+   Foundation, Inc.
+   
+   This program is free software: you can redistribute it and/or modify
    it under the terms of the GNU General Public License as published by
-   the Free Software Foundation; either version 2, or (at your option)
-   any later version.
-
+   the Free Software Foundation, either version 3 of the License, or
+   (at your option) any later version.
+   
    This program is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
-
+   
    You should have received a copy of the GNU General Public License
-   along with this program; if not, write to the Free Software
-   Foundation, Inc., 51 Franklin Street, Fifth Floor,
-   Boston, MA 02110-1301, USA.  */
+   along with this program.  If not, see <http://www.gnu.org/licenses/>.  */
 
 /* As a special exception, you may create a larger work that contains
    part or all of the Bison parser skeleton and distribute that work
@@ -28,16 +28,36 @@
    special exception, which will cause the skeleton and the resulting
    Bison output files to be licensed under the GNU General Public
    License without this special exception.
-
+   
    This special exception was added by the Free Software Foundation in
    version 2.2 of Bison.  */
 
 // Take the name prefix into account.
 #define yylex   examplelex
 
+/* First part of user declarations.  */
+
+/* Line 311 of lalr1.cc  */
+#line 4 "parser.yy"
+ /*** C/C++ Declarations ***/
+
+#include <stdio.h>
+#include <string>
+#include <vector>
+
+#include "expression.h"
+
+
+
+/* Line 311 of lalr1.cc  */
+#line 54 "parser.cc"
+
+
 #include "parser.h"
 
 /* User implementation prologue.  */
+
+/* Line 317 of lalr1.cc  */
 #line 78 "parser.yy"
 
 
@@ -52,8 +72,8 @@
 
 
 
-/* Line 317 of lalr1.cc.  */
-#line 57 "parser.cc"
+/* Line 317 of lalr1.cc  */
+#line 77 "parser.cc"
 
 #ifndef YY_
 # if YYENABLE_NLS
@@ -70,13 +90,11 @@
 /* Suppress unused-variable warnings by "using" E.  */
 #define YYUSE(e) ((void) (e))
 
-/* A pseudo ostream that takes yydebug_ into account.  */
-# define YYCDEBUG							\
-  for (bool yydebugcond_ = yydebug_; yydebugcond_; yydebugcond_ = false)	\
-    (*yycdebug_)
-
 /* Enable debugging if requested.  */
 #if YYDEBUG
+
+/* A pseudo ostream that takes yydebug_ into account.  */
+# define YYCDEBUG if (yydebug_) (*yycdebug_)
 
 # define YY_SYMBOL_PRINT(Title, Type, Value, Location)	\
 do {							\
@@ -102,18 +120,29 @@ do {					\
 
 #else /* !YYDEBUG */
 
+# define YYCDEBUG if (false) std::cerr
 # define YY_SYMBOL_PRINT(Title, Type, Value, Location)
 # define YY_REDUCE_PRINT(Rule)
 # define YY_STACK_PRINT()
 
 #endif /* !YYDEBUG */
 
+#define yyerrok		(yyerrstatus_ = 0)
+#define yyclearin	(yychar = yyempty_)
+
 #define YYACCEPT	goto yyacceptlab
 #define YYABORT		goto yyabortlab
 #define YYERROR		goto yyerrorlab
+#define YYRECOVERING()  (!!yyerrstatus_)
 
-namespace example
-{
+
+/* Line 380 of lalr1.cc  */
+#line 1 "[Bison:b4_percent_define_default]"
+
+namespace example {
+
+/* Line 380 of lalr1.cc  */
+#line 146 "parser.cc"
 #if YYERROR_VERBOSE
 
   /* Return YYSTR after stripping away unnecessary quotes and
@@ -157,8 +186,11 @@ namespace example
 
   /// Build a parser object.
   Parser::Parser (class Driver& driver_yyarg)
-    : yydebug_ (false),
+    :
+#if YYDEBUG
+      yydebug_ (false),
       yycdebug_ (&std::cerr),
+#endif
       driver (driver_yyarg)
   {
   }
@@ -196,7 +228,7 @@ namespace example
     yy_symbol_value_print_ (yytype, yyvaluep, yylocationp);
     *yycdebug_ << ')';
   }
-#endif /* ! YYDEBUG */
+#endif
 
   void
   Parser::yydestruct_ (const char* yymsg,
@@ -211,49 +243,85 @@ namespace example
     switch (yytype)
       {
         case 6: /* "\"string\"" */
+
+/* Line 480 of lalr1.cc  */
 #line 72 "parser.yy"
 	{ delete (yyvaluep->stringVal); };
-#line 217 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 253 "parser.cc"
 	break;
       case 18: /* "constant" */
+
+/* Line 480 of lalr1.cc  */
 #line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 222 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 262 "parser.cc"
 	break;
       case 19: /* "variable" */
+
+/* Line 480 of lalr1.cc  */
 #line 73 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 227 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 271 "parser.cc"
 	break;
       case 20: /* "atomexpr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 232 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 280 "parser.cc"
 	break;
       case 21: /* "powexpr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 237 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 289 "parser.cc"
 	break;
       case 22: /* "unaryexpr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 242 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 298 "parser.cc"
 	break;
       case 23: /* "mulexpr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 247 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 307 "parser.cc"
 	break;
       case 24: /* "addexpr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 252 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 316 "parser.cc"
 	break;
       case 25: /* "expr" */
+
+/* Line 480 of lalr1.cc  */
 #line 74 "parser.yy"
 	{ delete (yyvaluep->calcnode); };
-#line 257 "parser.cc"
+
+/* Line 480 of lalr1.cc  */
+#line 325 "parser.cc"
 	break;
 
 	default:
@@ -269,6 +337,7 @@ namespace example
     yylocation_stack_.pop (n);
   }
 
+#if YYDEBUG
   std::ostream&
   Parser::debug_stream () const
   {
@@ -293,12 +362,12 @@ namespace example
   {
     yydebug_ = l;
   }
-
+#endif
 
   int
   Parser::parse ()
   {
-    /// Look-ahead and look-ahead in internal form.
+    /// Lookahead and lookahead in internal form.
     int yychar = yyempty_;
     int yytoken = 0;
 
@@ -311,12 +380,12 @@ namespace example
     int yynerrs_ = 0;
     int yyerrstatus_ = 0;
 
-    /// Semantic value of the look-ahead.
+    /// Semantic value of the lookahead.
     semantic_type yylval;
-    /// Location of the look-ahead.
+    /// Location of the lookahead.
     location_type yylloc;
     /// The locations where the error started and ended.
-    location yyerror_range[2];
+    location_type yyerror_range[2];
 
     /// $$.
     semantic_type yyval;
@@ -329,13 +398,17 @@ namespace example
 
 
     /* User initialization code.  */
-    #line 41 "parser.yy"
+    
+/* Line 553 of lalr1.cc  */
+#line 41 "parser.yy"
 {
     // initialize the initial location object
     yylloc.begin.filename = yylloc.end.filename = &driver.streamname;
 }
-  /* Line 547 of yacc.c.  */
-#line 339 "parser.cc"
+
+/* Line 553 of lalr1.cc  */
+#line 411 "parser.cc"
+
     /* Initialize the stacks.  The initial state will be pushed in
        yynewstate, since the latter expects the semantical and the
        location values to have been already stored, initialize these
@@ -350,17 +423,22 @@ namespace example
   yynewstate:
     yystate_stack_.push (yystate);
     YYCDEBUG << "Entering state " << yystate << std::endl;
+
+    /* Accept?  */
+    if (yystate == yyfinal_)
+      goto yyacceptlab;
+
     goto yybackup;
 
     /* Backup.  */
   yybackup:
 
-    /* Try to take a decision without look-ahead.  */
+    /* Try to take a decision without lookahead.  */
     yyn = yypact_[yystate];
     if (yyn == yypact_ninf_)
       goto yydefault;
 
-    /* Read a look-ahead token.  */
+    /* Read a lookahead token.  */
     if (yychar == yyempty_)
       {
 	YYCDEBUG << "Reading a token: ";
@@ -396,16 +474,11 @@ namespace example
 	goto yyreduce;
       }
 
-    /* Accept?  */
-    if (yyn == yyfinal_)
-      goto yyacceptlab;
-
-    /* Shift the look-ahead token.  */
+    /* Shift the lookahead token.  */
     YY_SYMBOL_PRINT ("Shifting", yytoken, &yylval, &yylloc);
 
-    /* Discard the token being shifted unless it is eof.  */
-    if (yychar != yyeof_)
-      yychar = yyempty_;
+    /* Discard the token being shifted.  */
+    yychar = yyempty_;
 
     yysemantic_stack_.push (yylval);
     yylocation_stack_.push (yylloc);
@@ -451,20 +524,26 @@ namespace example
     switch (yyn)
       {
 	  case 2:
+
+/* Line 678 of lalr1.cc  */
 #line 96 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].integerVal));
-	   ;}
+	   }
     break;
 
   case 3:
+
+/* Line 678 of lalr1.cc  */
 #line 100 "parser.yy"
     {
 	       (yyval.calcnode) = new CNConstant((yysemantic_stack_[(1) - (1)].doubleVal));
-	   ;}
+	   }
     break;
 
   case 4:
+
+/* Line 678 of lalr1.cc  */
 #line 105 "parser.yy"
     {
 	       if (!driver.calc.existsVariable(*(yysemantic_stack_[(1) - (1)].stringVal))) {
@@ -476,122 +555,156 @@ namespace example
 		   (yyval.calcnode) = new CNConstant( driver.calc.getVariable(*(yysemantic_stack_[(1) - (1)].stringVal)) );
 		   delete (yysemantic_stack_[(1) - (1)].stringVal);
 	       }
-	   ;}
+	   }
     break;
 
   case 5:
+
+/* Line 678 of lalr1.cc  */
 #line 118 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	   ;}
+	   }
     break;
 
   case 6:
+
+/* Line 678 of lalr1.cc  */
 #line 122 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	   ;}
+	   }
     break;
 
   case 7:
+
+/* Line 678 of lalr1.cc  */
 #line 126 "parser.yy"
     {
 	       (yyval.calcnode) = (yysemantic_stack_[(3) - (2)].calcnode);
-	   ;}
+	   }
     break;
 
   case 8:
+
+/* Line 678 of lalr1.cc  */
 #line 131 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  ;}
+	  }
     break;
 
   case 9:
+
+/* Line 678 of lalr1.cc  */
 #line 135 "parser.yy"
     {
 	      (yyval.calcnode) = new CNPower((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 10:
+
+/* Line 678 of lalr1.cc  */
 #line 140 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	    ;}
+	    }
     break;
 
   case 11:
+
+/* Line 678 of lalr1.cc  */
 #line 144 "parser.yy"
     {
 		(yyval.calcnode) = (yysemantic_stack_[(2) - (2)].calcnode);
-	    ;}
+	    }
     break;
 
   case 12:
+
+/* Line 678 of lalr1.cc  */
 #line 148 "parser.yy"
     {
 		(yyval.calcnode) = new CNNegate((yysemantic_stack_[(2) - (2)].calcnode));
-	    ;}
+	    }
     break;
 
   case 13:
+
+/* Line 678 of lalr1.cc  */
 #line 153 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  ;}
+	  }
     break;
 
   case 14:
+
+/* Line 678 of lalr1.cc  */
 #line 157 "parser.yy"
     {
 	      (yyval.calcnode) = new CNMultiply((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 15:
+
+/* Line 678 of lalr1.cc  */
 #line 161 "parser.yy"
     {
 	      (yyval.calcnode) = new CNDivide((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 16:
+
+/* Line 678 of lalr1.cc  */
 #line 165 "parser.yy"
     {
 	      (yyval.calcnode) = new CNModulo((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 17:
+
+/* Line 678 of lalr1.cc  */
 #line 170 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  ;}
+	  }
     break;
 
   case 18:
+
+/* Line 678 of lalr1.cc  */
 #line 174 "parser.yy"
     {
 	      (yyval.calcnode) = new CNAdd((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 19:
+
+/* Line 678 of lalr1.cc  */
 #line 178 "parser.yy"
     {
 	      (yyval.calcnode) = new CNSubtract((yysemantic_stack_[(3) - (1)].calcnode), (yysemantic_stack_[(3) - (3)].calcnode));
-	  ;}
+	  }
     break;
 
   case 20:
+
+/* Line 678 of lalr1.cc  */
 #line 183 "parser.yy"
     {
 	      (yyval.calcnode) = (yysemantic_stack_[(1) - (1)].calcnode);
-	  ;}
+	  }
     break;
 
   case 21:
+
+/* Line 678 of lalr1.cc  */
 #line 188 "parser.yy"
     {
 		 driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] = (yysemantic_stack_[(3) - (3)].calcnode)->evaluate();
@@ -599,34 +712,42 @@ namespace example
 			   << " = " << driver.calc.variables[*(yysemantic_stack_[(3) - (1)].stringVal)] << "\n";
 		 delete (yysemantic_stack_[(3) - (1)].stringVal);
 		 delete (yysemantic_stack_[(3) - (3)].calcnode);
-	     ;}
+	     }
     break;
 
   case 28:
+
+/* Line 678 of lalr1.cc  */
 #line 203 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  ;}
+	  }
     break;
 
   case 29:
+
+/* Line 678 of lalr1.cc  */
 #line 207 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  ;}
+	  }
     break;
 
   case 30:
+
+/* Line 678 of lalr1.cc  */
 #line 211 "parser.yy"
     {
 	      driver.calc.expressions.push_back((yysemantic_stack_[(3) - (2)].calcnode));
-	  ;}
+	  }
     break;
 
 
-    /* Line 675 of lalr1.cc.  */
-#line 629 "parser.cc"
-	default: break;
+
+/* Line 678 of lalr1.cc  */
+#line 749 "parser.cc"
+	default:
+          break;
       }
     YY_SYMBOL_PRINT ("-> $$ =", yyr1_[yyn], &yyval, &yyloc);
 
@@ -661,7 +782,7 @@ namespace example
     yyerror_range[0] = yylloc;
     if (yyerrstatus_ == 3)
       {
-	/* If just tried and failed to reuse look-ahead token after an
+	/* If just tried and failed to reuse lookahead token after an
 	 error, discard it.  */
 
 	if (yychar <= yyeof_)
@@ -677,7 +798,7 @@ namespace example
 	  }
       }
 
-    /* Else will try to reuse look-ahead token after shifting the error
+    /* Else will try to reuse lookahead token after shifting the error
        token.  */
     goto yyerrlab1;
 
@@ -734,19 +855,16 @@ namespace example
 	YY_STACK_PRINT ();
       }
 
-    if (yyn == yyfinal_)
-      goto yyacceptlab;
-
     yyerror_range[1] = yylloc;
     // Using YYLLOC is tempting, but would change the location of
-    // the look-ahead.  YYLOC is available though.
+    // the lookahead.  YYLOC is available though.
     YYLLOC_DEFAULT (yyloc, (yyerror_range - 1), 2);
     yysemantic_stack_.push (yylval);
     yylocation_stack_.push (yyloc);
 
     /* Shift the error token.  */
     YY_SYMBOL_PRINT ("Shifting", yystos_[yyn],
-		   &yysemantic_stack_[0], &yylocation_stack_[0]);
+		     &yysemantic_stack_[0], &yylocation_stack_[0]);
 
     yystate = yyn;
     goto yynewstate;
@@ -762,7 +880,7 @@ namespace example
     goto yyreturn;
 
   yyreturn:
-    if (yychar != yyeof_ && yychar != yyempty_)
+    if (yychar != yyempty_)
       yydestruct_ ("Cleanup: discarding lookahead", yytoken, &yylval, &yylloc);
 
     /* Do not reclaim the symbols of the rule which action triggered
@@ -832,15 +950,15 @@ namespace example
 
   /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
      STATE-NUM.  */
-  const signed char Parser::yypact_ninf_ = -15;
+  const signed char Parser::yypact_ninf_ = -9;
   const signed char
   Parser::yypact_[] =
   {
-       -15,     0,   -15,   -15,   -15,   -15,   -14,    16,    27,    27,
-     -15,   -15,   -15,   -15,    -1,   -15,    23,     8,     9,    14,
-      16,   -15,     5,    -1,    -1,    27,    16,    16,    16,    16,
-      16,   -15,   -15,   -15,   -15,   -15,   -15,   -15,   -15,   -15,
-     -15,   -15,   -15,    23,    23
+        -9,     2,    -9,    -9,    -9,    -9,     0,    24,    32,    32,
+      -9,    -9,    -9,    31,    -9,    -9,     8,    -7,    11,    16,
+      24,    -9,    25,    -9,    -9,    32,    24,    24,    24,    24,
+      24,    -9,    -9,    -9,    -9,    -9,    -9,    -9,    -9,    -9,
+      -9,    -9,    -9,     8,     8
   };
 
   /* YYDEFACT[S] -- default rule to reduce with in state S when YYTABLE
@@ -860,8 +978,8 @@ namespace example
   const signed char
   Parser::yypgoto_[] =
   {
-       -15,   -15,   -15,    19,    20,    12,    13,   -15,    -5,   -15,
-     -15
+        -9,    -9,    -9,    -9,    -8,    -2,    12,    -9,     3,    -9,
+      -9
   };
 
   /* YYDEFGOTO[NTERM-NUM].  */
@@ -879,22 +997,22 @@ namespace example
   const unsigned char
   Parser::yytable_[] =
   {
-         2,    20,    22,     3,     4,     5,     6,     7,    25,    31,
-       8,     9,    32,    38,    34,    37,    10,    35,    29,    30,
-       4,     5,    21,     7,     0,    33,     8,     9,    23,    24,
-      36,     4,     5,    21,     7,    26,    27,    28,    40,    41,
-      42,     0,    43,    44,    39
+        23,    24,     2,    29,    30,     3,     4,     5,     6,     7,
+      22,    31,     8,     9,    32,    20,    34,    39,    10,    35,
+      26,    27,    28,    37,    40,    41,    42,    33,     4,     5,
+      21,     7,    36,    38,     8,     9,     4,     5,    21,     7,
+      25,    43,    44
   };
 
   /* YYCHECK.  */
-  const signed char
+  const unsigned char
   Parser::yycheck_[] =
   {
-         0,    15,     7,     3,     4,     5,     6,     7,     9,     0,
-      10,    11,     3,     8,     0,    20,    16,     3,    10,    11,
-       4,     5,     6,     7,    -1,    16,    10,    11,     8,     9,
-      16,     4,     5,     6,     7,    12,    13,    14,    26,    27,
-      28,    -1,    29,    30,    25
+         8,     9,     0,    10,    11,     3,     4,     5,     6,     7,
+       7,     0,    10,    11,     3,    15,     0,    25,    16,     3,
+      12,    13,    14,    20,    26,    27,    28,    16,     4,     5,
+       6,     7,    16,     8,    10,    11,     4,     5,     6,     7,
+       9,    29,    30
   };
 
   /* STOS_[STATE-NUM] -- The (internal number of the) accessing
@@ -905,7 +1023,7 @@ namespace example
          0,    27,     0,     3,     4,     5,     6,     7,    10,    11,
       16,    18,    19,    20,    21,    22,    23,    24,    25,    26,
       15,     6,    25,    21,    21,     9,    12,    13,    14,    10,
-      11,     0,     3,    16,     0,     3,    16,    25,     8,    20,
+      11,     0,     3,    16,     0,     3,    16,    25,     8,    21,
       22,    22,    22,    23,    23
   };
 
@@ -960,8 +1078,8 @@ namespace example
   Parser::yyrhs_[] =
   {
         27,     0,    -1,     4,    -1,     5,    -1,     6,    -1,    18,
-      -1,    19,    -1,     7,    25,     8,    -1,    20,    -1,    21,
-       9,    20,    -1,    21,    -1,    10,    21,    -1,    11,    21,
+      -1,    19,    -1,     7,    25,     8,    -1,    20,    -1,    20,
+       9,    21,    -1,    21,    -1,    10,    21,    -1,    11,    21,
       -1,    22,    -1,    23,    12,    22,    -1,    23,    13,    22,
       -1,    23,    14,    22,    -1,    23,    -1,    24,    10,    23,
       -1,    24,    11,    23,    -1,    24,    -1,     6,    15,    25,
@@ -1011,7 +1129,7 @@ namespace example
     int yynrhs = yyr2_[yyrule];
     /* Print the symbols being reduced, and their result.  */
     *yycdebug_ << "Reducing stack by rule " << yyrule - 1
-	       << " (line " << yylno << "), ";
+	       << " (line " << yylno << "):" << std::endl;
     /* The symbols being reduced.  */
     for (int yyi = 0; yyi < yynrhs; yyi++)
       YY_SYMBOL_PRINT ("   $" << yyi + 1 << " =",
@@ -1064,7 +1182,7 @@ namespace example
   }
 
   const int Parser::yyeof_ = 0;
-  const int Parser::yylast_ = 44;
+  const int Parser::yylast_ = 42;
   const int Parser::yynnts_ = 11;
   const int Parser::yyempty_ = -2;
   const int Parser::yyfinal_ = 2;
@@ -1075,8 +1193,17 @@ namespace example
   const unsigned int Parser::yyuser_token_number_max_ = 261;
   const Parser::token_number_type Parser::yyundef_token_ = 2;
 
-} // namespace example
 
+/* Line 1054 of lalr1.cc  */
+#line 1 "[Bison:b4_percent_define_default]"
+
+} // example
+
+/* Line 1054 of lalr1.cc  */
+#line 1204 "parser.cc"
+
+
+/* Line 1056 of lalr1.cc  */
 #line 217 "parser.yy"
  /*** Additional Code ***/
 

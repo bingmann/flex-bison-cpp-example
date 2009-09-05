@@ -57,7 +57,7 @@
     int  			integerVal;
     double 			doubleVal;
     std::string*		stringVal;
-    CalcNode*			calcnode;
+    class CalcNode*		calcnode;
 }
 
 %token			END	     0	"end of file"

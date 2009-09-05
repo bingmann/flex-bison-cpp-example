@@ -120,6 +120,7 @@ typedef unsigned int flex_uint32_t;
 #include <errno.h>
 #include <cstdlib>
 #include <cstring>
+#include <cstdio>
 /* end standard C++ headers. */
 /* %endif */
 
@@ -519,7 +520,7 @@ typedef example::Parser::token_type token_type;
  * yylex is invoked, the begin position is moved onto the end position. */
 #line 48 "scanner.ll"
 #define YY_USER_ACTION  yylloc->columns(yyleng);
-#line 523 "scanner.cc"
+#line 524 "scanner.cc"
 
 #define INITIAL 0
 
@@ -687,7 +688,7 @@ YY_DECL
 
  /*** BEGIN EXAMPLE - Change the example lexer rules below ***/
 
-#line 691 "scanner.cc"
+#line 692 "scanner.cc"
 
 	if ( !(yy_init) )
 		{
@@ -852,7 +853,7 @@ YY_RULE_SETUP
 #line 94 "scanner.ll"
 ECHO;
 	YY_BREAK
-#line 856 "scanner.cc"
+#line 857 "scanner.cc"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
