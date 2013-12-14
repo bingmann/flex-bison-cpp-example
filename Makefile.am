@@ -2,18 +2,21 @@
 
 AM_CFLAGS = -W -Wall -Wextra -ansi
 AM_CXXFLAGS = -W -Wall -Wextra -ansi
+AM_CPPFLAGS = -Isrc -I$(srcdir)/src
 
 noinst_LIBRARIES = libexampleparser.a
 
+BUILT_SOURCES = src/parser.cc src/parser.hh src/scanner.cc
+
 libexampleparser_a_SOURCES = \
-	src/parser.yy src/scanner.ll src/parser.h src/scanner.h src/y.tab.h \
+	src/parser.yy src/scanner.ll src/scanner.h src/y.tab.h \
 	src/location.hh src/position.hh src/stack.hh src/FlexLexer.h \
 	src/driver.cc src/driver.h src/expression.h
 
 bin_PROGRAMS = exprtest
 
-exprtest_SOURCES = exprtest.cc
-exprtest_DEPENDENCIES = libexampleparser.a
+exprtest_SOURCES = src/exprtest.cc
+exprtest_LDADD = libexampleparser.a
 
 LIBS = libexampleparser.a
 
