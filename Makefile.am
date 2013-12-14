@@ -30,8 +30,3 @@ EXTRA_DIST = src/readme.dox src/exprtest.txt \
 
 EXTRA_DIST += Doxyfile doxygen.css doxygen-html/* \
 	      flex-bison-cpp-example.sln
-
-extraclean:
-	rm -f src/parser.cc src/parser.h src/scanner.cc
-
-rebuild: clean extraclean all
