@@ -37,6 +37,6 @@ AC_PROG_RANLIB
 AC_PROG_LEX
 AC_PROG_YACC
 
-# Create Makefiles
-AC_CONFIG_FILES([Makefile src/Makefile])
+# Create the Makefile
+AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

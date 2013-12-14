@@ -7,7 +7,7 @@
 #include <string>
 #include <vector>
 
-#include "expression.h"
+#include "src/expression.h"
 
 %}
 
@@ -77,8 +77,8 @@
 
 %{
 
-#include "driver.h"
-#include "scanner.h"
+#include "src/driver.h"
+#include "src/scanner.h"
 
 /* this "connects" the bison parser in the driver to the flex scanner class
  * object. it defines the yylex() function call to pull the next token from the
