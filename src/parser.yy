@@ -104,7 +104,7 @@ constant : INTEGER
 variable : STRING
            {
 	       if (!driver.calc.existsVariable(*$1)) {
-		   error(yyloc, std::string("Unknown variable \"") + *$1 + "\"");
+		   error(yyla.location, std::string("Unknown variable \"") + *$1 + "\"");
 		   delete $1;
 		   YYERROR;
 	       }
